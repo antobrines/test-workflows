@@ -9,6 +9,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Use Node.js v16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
       - name: Cache Node.js packages
         uses: actions/cache@v2
         with:
@@ -18,9 +22,6 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies and check cache
-        uses: actions/setup-node@v1
-        with:
-          node-version: 16.x
         run: |
           if [ -d ~/.npm ]; then
             npm config set cache ~/.npm
@@ -32,10 +33,11 @@ jobs:
     needs: cache-packages
 
     steps:
+      - name: Use Node.js v16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
       - name: Run linters
-        uses: actions/setup-node@v1
-          with:
-            node-version: 16.x
         run: |
           npm run lint
 
@@ -44,10 +46,11 @@ jobs:
     needs: cache-packages
 
     steps:
+      - name: Use Node.js v16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
       - name: Run unit tests
-        uses: actions/setup-node@v1
-          with:
-            node-version: 16.x
         run: |
           npm run test:unit
 
@@ -56,6 +59,10 @@ jobs:
     needs: [run-linters, run-unit-tests]
 
     steps:
+      - name: Use Node.js v16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1
         with:
