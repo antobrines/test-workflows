@@ -9,11 +9,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Se déplacer dans le répertoire du projet
-        run: cd /home/runner/work/test-workflows
-        # run command ls
-      - name: Run lls
-        run: ls
       - name: Cache Node.js packages
         uses: actions/cache@v2
         with:
@@ -24,6 +19,7 @@ jobs:
 
       - name: Install dependencies and check cache
         run: |
+          cd /home/runner/work/test-workflows
           if [ -d ~/.npm ]; then
             npm config set cache ~/.npm
           fi
