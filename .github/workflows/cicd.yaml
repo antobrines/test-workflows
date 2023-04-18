@@ -43,7 +43,7 @@ jobs:
 
     steps:
       - name: Se déplacer dans le répertoire du projet
-          run: cd /home/runner/work/test-workflows
+        run: cd /home/runner/work/test-workflows
       - name: Run unit tests
         run: |
           npm run test:unit
