@@ -35,6 +35,8 @@ jobs:
     needs: cache-packages
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
       - name: Use Node.js v16
         uses: actions/setup-node@v2
         with:
@@ -48,6 +50,8 @@ jobs:
     needs: cache-packages
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
       - name: Use Node.js v16
         uses: actions/setup-node@v2
         with:
@@ -61,6 +65,8 @@ jobs:
     needs: [run-linters, run-unit-tests]
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
       - name: Use Node.js v16
         uses: actions/setup-node@v2
         with:
