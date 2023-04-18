@@ -22,7 +22,7 @@ jobs:
           if [ -d ~/.npm ]; then
             npm config set cache ~/.npm
           fi
-          npm install
+          npm install --force
 
   run-linters:
     runs-on: ubuntu-latest
