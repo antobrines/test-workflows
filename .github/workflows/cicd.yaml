@@ -18,6 +18,9 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies and check cache
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
         run: |
           if [ -d ~/.npm ]; then
             npm config set cache ~/.npm
@@ -29,9 +32,10 @@ jobs:
     needs: cache-packages
 
     steps:
-      - name: Se déplacer dans le répertoire du projet
-        run: cd /home/runner/work/test-workflows
       - name: Run linters
+        uses: actions/setup-node@v1
+          with:
+            node-version: 16.x
         run: |
           npm run lint
 
@@ -40,9 +44,10 @@ jobs:
     needs: cache-packages
 
     steps:
-      - name: Se déplacer dans le répertoire du projet
-        run: cd /home/runner/work/test-workflows
       - name: Run unit tests
+        uses: actions/setup-node@v1
+          with:
+            node-version: 16.x
         run: |
           npm run test:unit
 
