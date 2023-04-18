@@ -12,7 +12,7 @@ jobs:
       - name: Se déplacer dans le répertoire du projet
         run: cd /home/runner/work/test-workflows
         # run command ls
-      - name: Run ls
+      - name: Run lls
         run: ls
       - name: Cache Node.js packages
         uses: actions/cache@v2
