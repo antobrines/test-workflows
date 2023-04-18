@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
       - name: Use Node.js v16
         uses: actions/setup-node@v2
         with:
@@ -52,7 +54,7 @@ jobs:
           node-version: 16.x
       - name: Run unit tests
         run: |
-          npm run test:unit
+          npm run test
 
   deploy-to-netlify:
     runs-on: ubuntu-latest
